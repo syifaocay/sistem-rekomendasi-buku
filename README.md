@@ -84,6 +84,7 @@ Teknik yang digunakan dalam penyiapan data *(Data Preparation)* yaitu:
 - **Randomize Dataset** : pengacakan data agar distribusi datanya menjadi random. Pengacakan data bertujuan untuk mengurangi varians dan memastikan bahwa model tetap umum dan *overfit less*. Pengacakan data juga memastikan bahwa data yang digunakan saat validasi merepresentasikan seluruh distribusi data yang ada.
 - **Data Standardization** : Pada data rating yang digunakan pada proyek ini berada pada rentang 0 hingga 10. Penerapan standarisasi menjadi rentang 0 hingga 1 dapat mempermudah saat proses training. Hal ini dikarenakan variabel yang diukur pada skala yang berbeda tidak memberikan kontribusi yang sama pada model fitting & fungsi model yang dipelajari dan mungkin berakhir dengan menciptakan bias jika data tidak distandarisasi terlebih dulu.
 - **Data Splitting** : dataset dibagi menjadi 2 bagian, yaitu data yang akan digunakan untuk melatih model (sebesar 80%) dan data untuk memvalidasi model (sebesar 20%). Tujuan dari pembagian data uji dan validasi tidak lain adalah untuk proses melatih model serta mengukur kinerja model yang telah didapatkan.
+- **class RecommenderNe** : kita membuat class RecommenderNet dengan keras Model class. Kode class RecommenderNet ini terinspirasi dari tutorial dalam situs Keras dengan beberapa adaptasi sesuai kasus yang sedang kita selesaikan.
 
 ## Modeling
 Di sini, kita membuat class RecommenderNet dengan keras Model class. Kode class RecommenderNet ini terinspirasi dari tutorial dalam situs Keras dengan beberapa adaptasi sesuai kasus yang sedang kita selesaikan. Terapkan kode berikut. 
@@ -107,7 +108,7 @@ Pada proyek ini menggunakan metrik RMSE (Root Mean Square Error) untuk mengevalu
 
 ![RMSE](https://i.postimg.cc/tgjfntZk/RMSE.png)
 
-_Gambar 4.rumus rmse_
+_Gambar 4.rumus rmse._
 
 `RMSE` = nilai root mean square error
 
@@ -125,10 +126,15 @@ Berikut ini adalah plot metrik RMSE setelah proses pelatihan model.
 
 ![Screenshot (147)](https://user-images.githubusercontent.com/69046629/192476257-32d169ea-fe09-4685-84ed-0bb62e36f039.png)
 
-_Gambar 5.metriks_
+_Gambar 5.metriks._
 
 
 Berdasarkan metriks tersebut menunjukkan bahwa model yang telah dibuat memiliki nilai Root Mean Squared Error (RMSE) sebesar 0.2550
+
+## Kesimpulan
+
+setelah melakukan semua proses dari mulai menyiapkan data sampai melakukan evaluasi, kita telah berhasil membuat sistem rekomendasi 10 buku kepada user dengan memanfaatkan data buku yang pernah diberi rating oleh user di masa lampau.
+
 
 ## Referensi
 
