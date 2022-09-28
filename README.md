@@ -55,6 +55,7 @@ Pada berkas `Ratings.csv` memuat data rating buku yang diberikan oleh pengguna. 
  - `Book-Rating` : berisi nilai rating yang diberikan oleh pengguna berkisar antara 0-10
 
 tabel 1.Data rating.
+
 ![Screenshot (144)](https://user-images.githubusercontent.com/69046629/192459750-7d0ef6c8-3f7f-4aee-959a-8d21a5dff9cf.png)
 
 
@@ -66,6 +67,7 @@ Pada data `Rating` ini juga ditemukan bahwa `User-ID` berupa ID angka yang beruk
 Berikut ini adalah hasil dari jumlah rating buku yang diberikan oleh user.
 
 tabel 2.jumlah rating yang diberikan user.
+
 ![Screenshot (145)](https://user-images.githubusercontent.com/69046629/192460655-18da342a-2847-4a15-8505-961dd5f7a46d.png)
 
 
@@ -104,6 +106,7 @@ Setelah model dan kelas sudah berhasil dibuat, langkah berikutnya adalah melakuk
 Model yang telah dibuat dapat menghasilkan top-10 rekomendasi buku seperti yang ditunjukkan berikut ini.
 
 tabel 3.top 10 rekomendasi buku.
+
 ![Screenshot (146)](https://user-images.githubusercontent.com/69046629/192475863-6f32f50f-8242-4720-a82e-37accd7b36d6.png)
 
 
