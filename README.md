@@ -54,9 +54,10 @@ Pada berkas `Ratings.csv` memuat data rating buku yang diberikan oleh pengguna. 
  - `ISBN` : berisi kode ISBN buku yang diberi rating oleh pengguna
  - `Book-Rating` : berisi nilai rating yang diberikan oleh pengguna berkisar antara 0-10
 
+tabel 1.Data rating.
 ![Screenshot (144)](https://user-images.githubusercontent.com/69046629/192459750-7d0ef6c8-3f7f-4aee-959a-8d21a5dff9cf.png)
 
-_Gambar 1.Data ratings_
+
 
 
 Pada data `Rating` ini juga ditemukan bahwa `User-ID` berupa ID angka yang berukuran cukup besar. Lalu `ISBN` merupakan string unik identitas buku gabungan angka dan huruf. Kedua nilai ini nantinya perlu dilakukan encoding agar dapat menghasilkan rekomendasi. Data rating ini juga merupakan data utama dalam membuat sistem rekomendasi dengan Collaborative Filtering pada proyek ini.
@@ -64,9 +65,8 @@ Pada data `Rating` ini juga ditemukan bahwa `User-ID` berupa ID angka yang beruk
 
 Berikut ini adalah hasil dari jumlah rating buku yang diberikan oleh user.
 
+tabel 2.jumlah rating yang diberikan user.
 ![Screenshot (145)](https://user-images.githubusercontent.com/69046629/192460655-18da342a-2847-4a15-8505-961dd5f7a46d.png)
-
-_Gambar 2.jumlah rating yang diberikan user_
 
 
 Pada tabel di atas dapat diketahui bahwa mayoritas user - ada lebih dari 700 ribu yang memberikan rating 0 pada buku sehingga data ini dikatakan tidak seimbang *(imbalance)*. Untuk itu pada data ini nantinya akan dilakukan penanganan agar dapat lebih seimbang.
@@ -87,18 +87,24 @@ Teknik yang digunakan dalam penyiapan data *(Data Preparation)* yaitu:
 - **class RecommenderNe** : kita membuat class RecommenderNet dengan keras Model class. Kode class RecommenderNet ini terinspirasi dari tutorial dalam situs Keras dengan beberapa adaptasi sesuai kasus yang sedang kita selesaikan.
 
 ## Modeling
-Di sini, kita membuat class RecommenderNet dengan keras Model class. Kode class RecommenderNet ini terinspirasi dari tutorial dalam situs Keras dengan beberapa adaptasi sesuai kasus yang sedang kita selesaikan. Terapkan kode berikut. 
+Di sini, kita membuat class RecommenderNet dengan keras Model class. Kode class RecommenderNet ini terinspirasi dari tutorial dalam situs Keras dengan beberapa adaptasi sesuai kasus yang sedang kita selesaikan. Terapkan kode berikut. Pada tahap ini, model untuk membuat sistem rekomendasi postingan dengan metode collaborative filtering akan dipersiapkan. Model tersebut akan dibuat dengan pustaka Keras dan diberi nama RecommenderNet. Model akan menghitung skor kecocokan antara pengguna dengan postingan melalui teknik embedding. Pertama, model akan melakukan proses embedding terhadap data pengguna dan postingan. Selanjutnya, model akan melakukan operasi perkalian dot product antara embedding pengguna dan postingan. Terakhir, model akan menambahkan bias untuk setiap pengguna atau postingan. Skor kecocokan akan ditentukan dalam skala 0–1 dengan fungsi aktivasi sigmoid.
 
 Beberapa properti yang digunakan dalam kelas RecommenderNet dan menjadi parameter pada layer embedding untuk menghasilkan model diantaranya:
 - `num_users` : jumlah data pengguna
 - `num_isbn` : jumlah data buku, dihitung berdasarkan ISBN
 - `embedding_size` : ukuran atau dimensi yang digunakan dalam embedding pada data user dan buku
 
+Setelah selesai mempersiapkan kelas model, langkah selanjutnya adalah melakukan compile pada model dengan memberikan argumen berupa jumlah pengguna unik pada data tayangan, jumlah postingan unik pada data tayangan, dan ukuran embedding. Metrik yang digunakan untuk mengukur kualitas model adalah metrik RMSE (Root Mean Squared Error).
+
+etelah model selesai melakukan pelatihan, langkah selanjutnya yaitu membuat kelas yang berfungsi untuk menampilkan keluaran dalam bentuk bingkai data ataupun teks laporan.
+
+Setelah model dan kelas sudah berhasil dibuat, langkah berikutnya adalah melakukan evaluasi model dengan melakukan visualisasi nilai metrik RMSE dan melihat daftar rekomendasi postingan berdasarkan postingan yang sering dilihat pengguna. Untuk menguji hasil rekomendasi postingan, model cukup diuji dengan satu sampel saja dengan bentuk keluaran yang berbeda.
+
 
 Model yang telah dibuat dapat menghasilkan top-10 rekomendasi buku seperti yang ditunjukkan berikut ini.
-![Screenshot (146)](https://user-images.githubusercontent.com/69046629/192475863-6f32f50f-8242-4720-a82e-37accd7b36d6.png)
 
-_Gambar 3.top 10 rekomendasi buku_
+tabel 3.top 10 rekomendasi buku.
+![Screenshot (146)](https://user-images.githubusercontent.com/69046629/192475863-6f32f50f-8242-4720-a82e-37accd7b36d6.png)
 
 
 
@@ -108,7 +114,7 @@ Pada proyek ini menggunakan metrik RMSE (Root Mean Square Error) untuk mengevalu
 
 ![RMSE](https://i.postimg.cc/tgjfntZk/RMSE.png)
 
-_Gambar 4.rumus rmse._
+_Gambar 1.rumus rmse._
 
 `RMSE` = nilai root mean square error
 
@@ -126,7 +132,7 @@ Berikut ini adalah plot metrik RMSE setelah proses pelatihan model.
 
 ![Screenshot (147)](https://user-images.githubusercontent.com/69046629/192476257-32d169ea-fe09-4685-84ed-0bb62e36f039.png)
 
-_Gambar 5.metriks._
+_Gambar 2.metriks._
 
 
 Berdasarkan metriks tersebut menunjukkan bahwa model yang telah dibuat memiliki nilai Root Mean Squared Error (RMSE) sebesar 0.2550
