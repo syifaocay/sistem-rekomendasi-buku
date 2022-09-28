@@ -56,7 +56,21 @@ Pada berkas `Ratings.csv` memuat data rating buku yang diberikan oleh pengguna. 
 
 tabel 1.Data rating.
 
-![Screenshot (144)](https://user-images.githubusercontent.com/69046629/192459750-7d0ef6c8-3f7f-4aee-959a-8d21a5dff9cf.png)
+|   | User-ID  |ISBN   |  book-rating |
+|---|---|---|---|
+|  0 | 276725	  | 034545104X  |  0 |
+| 1  | 276726	  | 0155061224  |  5 |
+|2   | 276727  |  0446520802	 |  0 |
+|  3 | 276729		  | 052165615X  | 3  |
+|  4 |  276729				 |0521795028   | 6  |
+|  ... |...   | ...  |...   |
+|1149775|	276704|	1563526298|	9|
+|1149776|	276706	|0679447156|	0|
+|1149777|	276709	|0515107662|	10|
+|1149778|	276721|	0590442449	|10|
+|1149779|	276723|	05162443314|	8|
+
+1149780 rows × 3 columns
 
 
 
@@ -68,7 +82,19 @@ Berikut ini adalah hasil dari jumlah rating buku yang diberikan oleh user.
 
 tabel 2.jumlah rating yang diberikan user.
 
-![Screenshot (145)](https://user-images.githubusercontent.com/69046629/192460655-18da342a-2847-4a15-8505-961dd5f7a46d.png)
+|  Book-Rating | User-ID  |ISBN   |
+|---|---|---|
+|0|	716109|	716109|
+|1	|1770|	1770|
+|2	|2759	|2759|
+|3	|5996|	5996|
+|4	|8904	|8904|
+|5	|50974	|50974|
+|6	|36924	|36924|
+|7	|76457	|76457|
+|8	|103736	|103736|
+|9	|67541|	67541|
+|10	|78610	|78610|
 
 
 Pada tabel di atas dapat diketahui bahwa mayoritas user - ada lebih dari 700 ribu yang memberikan rating 0 pada buku sehingga data ini dikatakan tidak seimbang *(imbalance)*. Untuk itu pada data ini nantinya akan dilakukan penanganan agar dapat lebih seimbang.
@@ -98,18 +124,39 @@ Beberapa properti yang digunakan dalam kelas RecommenderNet dan menjadi paramete
 
 Setelah selesai mempersiapkan kelas model, langkah selanjutnya adalah melakukan compile pada model dengan memberikan argumen berupa jumlah pengguna unik pada data tayangan, jumlah postingan unik pada data tayangan, dan ukuran embedding. Metrik yang digunakan untuk mengukur kualitas model adalah metrik RMSE (Root Mean Squared Error).
 
-etelah model selesai melakukan pelatihan, langkah selanjutnya yaitu membuat kelas yang berfungsi untuk menampilkan keluaran dalam bentuk bingkai data ataupun teks laporan.
+Model ini menggunakan Binary Crossentropy untuk menghitung **loss function**, Adam (Adaptive Moment Estimation) sebagai **optimizer**, dan root mean squared error (RMSE) sebagai **metrics evaluation**. 
+
+setelah model selesai melakukan pelatihan, langkah selanjutnya yaitu membuat kelas yang berfungsi untuk menampilkan keluaran dalam bentuk bingkai data ataupun teks laporan.
 
 Setelah model dan kelas sudah berhasil dibuat, langkah berikutnya adalah melakukan evaluasi model dengan melakukan visualisasi nilai metrik RMSE dan melihat daftar rekomendasi postingan berdasarkan postingan yang sering dilihat pengguna. Untuk menguji hasil rekomendasi postingan, model cukup diuji dengan satu sampel saja dengan bentuk keluaran yang berbeda.
 
 
 Model yang telah dibuat dapat menghasilkan top-10 rekomendasi buku seperti yang ditunjukkan berikut ini.
 
-tabel 3.top 10 rekomendasi buku.
+tabel 3.rekomendasi user 134732.
 
-![Screenshot (146)](https://user-images.githubusercontent.com/69046629/192475863-6f32f50f-8242-4720-a82e-37accd7b36d6.png)
+|Showing recommendations for users: 134732 |
+|---|
+|Books with high ratings from user|
+|Jennifer Egan - Look at Me|
+|Jacquelyn Mitchard - The Deep End of the Ocean|
+|Barry Unsworth - Morality Play|
+|Matt Ridley - The Best American Science Writing 2002 (Best American Science Writing (Paperback))|
+|Hari Kunzru - The Impressionist|
 
-
+tabel 4.rekomendasi buku.
+|Top 10 book recommendation|
+|---|
+|1. J. K. Rowling - Harry Potter and the Chamber of Secrets (Book 2)|
+|2. Bill Watterson - The Authoritative Calvin and Hobbes (Calvin and Hobbes)|
+|3. J.R.R. TOLKIEN - The Return of the King (The Lord of the Rings, Part 3)|
+|4. J. K. Rowling - Harry Potter and the Goblet of Fire (Book 4)|
+|5. J. R. R. Tolkien - The Two Towers (The Lord of the Rings, Part 2)|
+|6. Bill Watterson - Calvin and Hobbes|
+|7. DIANA GABALDON - Drums of Autumn|
+|8. Jodi Picoult - My Sister's Keeper : A Novel (Picoult, Jodi)|
+|9. Scott Adams - Dilbert: A Book of Postcards|
+|10. J. K. Rowling - Harry Potter and the Chamber of Secrets Postcard Book|
 
 
 ## Evaluation
